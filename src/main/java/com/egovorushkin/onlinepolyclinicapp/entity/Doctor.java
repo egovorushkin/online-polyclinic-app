@@ -1,10 +1,13 @@
 package com.egovorushkin.onlinepolyclinicapp.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,18 +25,19 @@ public class Doctor {
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@Column(name = "specialty")
-	private String specialty;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "specialty")
+	private Specialty specialty;
+	
 	
 	public Doctor() {
 		
 	}
 
-	public Doctor(int id, String firstName, String lastName, String specialty) {
+	public Doctor(int id, String firstName, String lastName) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.specialty = specialty;
 	}
 
 	public int getId() {
@@ -60,11 +64,11 @@ public class Doctor {
 		this.lastName = lastName;
 	}
 
-	public String getSpecialty() {
+	public Specialty getSpecialty() {
 		return specialty;
 	}
 
-	public void setSpecialty(String specialty) {
+	public void setSpecialty(Specialty specialty) {
 		this.specialty = specialty;
 	}
 
@@ -73,6 +77,6 @@ public class Doctor {
 		return "Doctor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", specialty=" + specialty
 				+ "]";
 	}
-	
+
 	
 }

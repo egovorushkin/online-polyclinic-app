@@ -8,6 +8,6 @@ import com.egovorushkin.onlinepolyclinicapp.entity.Doctor;
 
 public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
 
-	
+	// method to sort by last name
 	public List<Doctor> findByOrderByLastNameAsc();
 }
