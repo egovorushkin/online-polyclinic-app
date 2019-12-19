@@ -5,11 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "specialty")
-public class Specialty {
+@Table(name = "speciality")
+public class Speciality {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,11 +20,14 @@ public class Specialty {
 	@Column(name = "name")
 	private String name;
 	
-	public Specialty() {
+	@OneToOne(mappedBy = "speciality")
+	private Doctor doctor;
+	
+	public Speciality() {
 		
 	}
 
-	public Specialty(int id, String name) {
+	public Speciality(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -47,7 +51,7 @@ public class Specialty {
 
 	@Override
 	public String toString() {
-		return "Specialty [id=" + id + ", name=" + name + "]";
+		return name;
 	}
 	
 	
