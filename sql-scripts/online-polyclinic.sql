@@ -17,13 +17,13 @@ CREATE TABLE `admininstrator` (
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS `specialty`;
+DROP TABLE IF EXISTS `speciality`;
 
 --
--- Table structure for table `specialty`
+-- Table structure for table `speciality`
 --
 
-CREATE TABLE `specialty` (
+CREATE TABLE `speciality` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
     `name` varchar(100) DEFAULT NULL,
     PRIMARY KEY (`id`)
@@ -39,10 +39,10 @@ CREATE TABLE `doctor` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
     `first_name` varchar(45) DEFAULT NULL,
     `last_name` varchar(45) DEFAULT NULL,
-    `specialty_id` int(11) DEFAULT NULL,
+    `speciality_id` int(11) DEFAULT NULL,
     PRIMARY KEY (`id`),
-    KEY `FK_SPECIALTY_idx` (`specialty_id`),
-    CONSTRAINT `FK_SPECIALTY` FOREIGN KEY (`specialty_id`) REFERENCES `specialty` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    KEY `FK_SPECIALITY_idx` (`speciality_id`),
+    CONSTRAINT `FK_SPECIALITY` FOREIGN KEY (`speciality_id`) REFERENCES `speciality` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 @Entity
@@ -26,8 +27,8 @@ public class Doctor {
 	private String lastName;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "specialty")
-	private Specialty specialty;
+	@JoinColumn(name = "speciality_id", referencedColumnName = "id")
+	private Speciality speciality;
 	
 	
 	public Doctor() {
@@ -64,17 +65,17 @@ public class Doctor {
 		this.lastName = lastName;
 	}
 
-	public Specialty getSpecialty() {
-		return specialty;
+	public Speciality getSpeciality() {
+		return speciality;
 	}
 
-	public void setSpecialty(Specialty specialty) {
-		this.specialty = specialty;
+	public void setSpeciality(Speciality speciality) {
+		this.speciality = speciality;
 	}
 
 	@Override
 	public String toString() {
-		return "Doctor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", specialty=" + specialty
+		return "Doctor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", speciality=" + speciality
 				+ "]";
 	}
 

@@ -2,6 +2,7 @@ package com.egovorushkin.onlinepolyclinicapp.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +13,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.egovorushkin.onlinepolyclinicapp.entity.Doctor;
 import com.egovorushkin.onlinepolyclinicapp.service.DoctorService;
+import com.egovorushkin.onlinepolyclinicapp.service.SpecialityService;
 
 @Controller
 @RequestMapping("/doctors")
 public class DoctorController {
 
 	private DoctorService doctorService;
+	
+	@Autowired
+	private SpecialityService specialityService;
 
+	@Autowired
 	public DoctorController(DoctorService theDoctorService) {
 		doctorService = theDoctorService;
 	}
@@ -36,6 +42,18 @@ public class DoctorController {
 		return "/doctors/list-doctors";
 	}
 
+	@GetMapping("/showFormForAdd")
+	public String showFormForAdd(Model theModel) {
+
+		// create model attribute to bind form data
+		Doctor theDoctor = new Doctor();
+
+		theModel.addAttribute("doctor", theDoctor);
+		theModel.addAttribute("specialities", specialityService.findAll());
+
+		return "/doctors/doctor-form";
+	}
+
 	@GetMapping("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("doctorId") int theId, Model theModel) {
 
@@ -44,6 +62,7 @@ public class DoctorController {
 
 		// set doctor as a model attribute to pre-populate the form
 		theModel.addAttribute("doctor", theDoctor);
+		theModel.addAttribute("specialities", specialityService.findAll());
 
 		// send over to our form
 		return "doctors/doctor-form";
