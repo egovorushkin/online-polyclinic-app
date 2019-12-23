@@ -13,19 +13,23 @@ public class Diagnosis {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column
+	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
+	@Column(name = "description")
+	private String description;
+
 	public Diagnosis() {
-		
+
 	}
 
-	public Diagnosis(int id, String name) {
+	public Diagnosis(int id, String name, String description) {
 		this.id = id;
 		this.name = name;
+		this.description = description;
 	}
 
 	public int getId() {
@@ -44,10 +48,17 @@ public class Diagnosis {
 		this.name = name;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public String toString() {
-		return "Diagnosis [id=" + id + ", name=" + name + "]";
+		return "Diagnosis [id=" + id + ", name=" + name + ", description=" + description + "]";
 	}
-	
-	
+
 }
