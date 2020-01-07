@@ -83,7 +83,7 @@
 						Update
 					</a>
 
-					<a th:href="@{/patients/delete(doctorId=${tempPatient.id})}" class="btn btn-danger btn-sm"
+					<a th:href="@{/patients/delete(patientId=${tempPatient.id})}" class="btn btn-danger btn-sm"
 						onclick="if (!(confirm('Are you sure you want to delete this patient?'))) return false">
 						Delete
 					</a>

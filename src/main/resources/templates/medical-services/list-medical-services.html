@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
-    <title>Save Diagnosis</title>
-
+    <title>Speciality Directory</title>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" th:href="@{/}">Polyclinic Online</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -43,33 +42,45 @@
                 <li class="nav-item active">
                     <a class="nav-link" th:href="@{/visits/list}">Visits <span class="sr-only">(current)</span></a>
                 </li>
-            </ul>
         </div>
     </nav>
 </head>
 
 <body>
     <div class="container">
-        <h3>Diagnosis Directory</h3>
+        <h3>Medical Service Directory</h3>
         <hr>
 
-        <p class="h4 mb-4">Save Diagnosis</p>
+        <a th:href="@{/medical-services/showFormForAdd}" class="btn btn-primary btn-sm mb-3">
+            Add Medical Service
+        </a>
 
-        <form action="#" th:action="@{/diagnoses/save}" th:object="${diagnosis}" method="POST">
+        <table class="table table-borered table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tr th:each="tempMedicalService : ${medicalServices}">
+                <td th:text="${tempMedicalService.name}"></td>
+                <td>
+                    <a th:href="@{/medical-services/showFormForUpdate(medicalServiceId=${tempMedicalService.id})}"
+                        class="btn btn-info btn-sm">
+                        Update
+                    </a>
+                    <a th:href="@{/medical-services/delete(medicalServiceId=${tempMedicalService.id})}"
+                        class="btn btn-danger btn-sm"
+                        onclick="if (!(confirm('Are you sure you want to delete this medical service?'))) return false">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            
 
-            <input type="hidden" th:field="*{id}" />
+            <tbody>
 
-            <input type="text" th:field="*{name}" class="form-control mb-4 col-4" placeholder="Name">
-
-            <textarea th:field="*{description}" class="form-control mb-4 col-4" placeholder="Description"></textarea>
-
-            <button type="submit" class="btn btn-info col-2">Save</button>
-
-        </form>
-
-        <hr>
-        <a th:href="@{/diagnoses/list}">Back to Diagnoses List</a>
-
+            </tbody>
+        </table>
     </div>
 </body>
 
