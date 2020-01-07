@@ -2,8 +2,6 @@ package com.egovorushkin.onlinepolyclinicapp.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +19,6 @@ import com.egovorushkin.onlinepolyclinicapp.service.SpecialityService;
 public class SpecialityController {
 
 	private SpecialityService specialityService;
-	
 
 	@Autowired
 	public SpecialityController(SpecialityService theSpecialityService) {
@@ -30,11 +27,10 @@ public class SpecialityController {
 
 	// list of specialities
 	@GetMapping("/list")
-	public String listSpecialities(Model theModel, HttpServletRequest request) {
+	public String listSpecialities(Model theModel) {
 
 		// get specialities from database
 		List<Speciality> theSpecialities = specialityService.findAll();
-		request.getSession().setAttribute("specialities", theSpecialities);
 
 		// add to the spring model
 		theModel.addAttribute("specialities", theSpecialities);
@@ -79,7 +75,7 @@ public class SpecialityController {
 	@GetMapping("/delete")
 	public String deleteSpeciality(@RequestParam("specialityId") int theId) {
 
-		// delete the doctor
+		// delete the speciality
 		specialityService.deleteById(theId);
 
 		return "redirect:/specialities/list";
