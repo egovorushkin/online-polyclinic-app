@@ -1,4 +1,4 @@
-INSERT INTO `specialty` (name) VALUES 
+INSERT INTO `speciality` (name) VALUES 
 ('Allergy and immunology'),
 ('Adolescent medicine'),
 ('Anesthesiology'),
