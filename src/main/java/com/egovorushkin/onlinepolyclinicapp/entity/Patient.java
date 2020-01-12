@@ -1,22 +1,18 @@
 package com.egovorushkin.onlinepolyclinicapp.entity;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "patient")
 public class Patient {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -40,9 +36,8 @@ public class Patient {
 	@Column(name = "note")
 	private String note;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient", cascade = { CascadeType.PERSIST, CascadeType.MERGE,
-			CascadeType.DETACH, CascadeType.REFRESH })
-	private List<Visit> visits;
+	@OneToOne(mappedBy = "patient")
+	private Visit visit;
 
 	public Patient() {
 
@@ -115,31 +110,17 @@ public class Patient {
 		this.note = note;
 	}
 
-	public List<Visit> getVisits() {
-		return visits;
+	public Visit getVisit() {
+		return visit;
 	}
 
-	public void setVisits(List<Visit> visits) {
-		this.visits = visits;
+	public void setVisit(Visit visit) {
+		this.visit = visit;
 	}
-
 
 	@Override
 	public String toString() {
-		return "Patient [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", address=" + address
-				+ ", dayOfBirth=" + dayOfBirth + ", phoneNumber=" + phoneNumber + ", note=" + note + ", visits="
-				+ visits + "]";
-	}
-
-	public void add(Visit tempVisit) {
-
-		if (visits == null) {
-			visits = new ArrayList<>();
-		}
-
-		visits.add(tempVisit);
-
-		tempVisit.setPatient(this);
+		return lastName + " " + firstName;
 	}
 
 }
