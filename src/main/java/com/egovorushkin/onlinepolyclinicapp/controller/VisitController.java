@@ -63,7 +63,7 @@ public class VisitController {
 		theModel.addAttribute("visit", theVisit);
 		theModel.addAttribute("patients", patientService.findAll());
 		theModel.addAttribute("doctors", doctorService.findAll());
-		theModel.addAttribute("medicalServices", medicalServiceService.findAll());
+		//theModel.addAttribute("medicalServices", medicalServiceService.findAll());
 		theModel.addAttribute("diagnoses", diagnosisService.findAll());
 
 		return "/visits/visit-form";
@@ -79,7 +79,7 @@ public class VisitController {
 		theModel.addAttribute("visit", theVisit);
 		theModel.addAttribute("patients", patientService.findAll());
 		theModel.addAttribute("doctors", doctorService.findAll());
-		theModel.addAttribute("medicalServices", medicalServiceService.findAll());
+		//theModel.addAttribute("medicalServices", medicalServiceService.findAll());
 		theModel.addAttribute("diagnoses", diagnosisService.findAll());
 
 		// send over to our form

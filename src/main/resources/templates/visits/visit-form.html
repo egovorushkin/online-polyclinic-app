@@ -58,13 +58,15 @@
 			<input type="hidden" th:field="*{id}" />
 
 			<select name="patient" th:field="*{patient}">
-				<option th:each="patient : ${patients}" th:value="${patient.id}" th:text="${patient.lastName} + ' ' + ${patient.firstName}">
+				<option th:each="patient : ${patients}" th:value="${patient.id}"
+					th:text="${patient.lastName} + ' ' + ${patient.firstName}">
 				</option>
 			</select>
 			<br>
 
 			<select name="doctor" th:field="*{doctor}">
-				<option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.firstName} + ' ' + ${doctor.firstName}">
+				<option th:each="doctor : ${doctors}" th:value="${doctor.id}"
+					th:text="${doctor.firstName} + ' ' + ${doctor.firstName}">
 				</option>
 			</select>
 			<br>
@@ -75,15 +77,8 @@
 				title="Enter a date in this format YYYY-MM-DD HH:MM:SS" />
 			<br>
 
-			<select name="medicalService" th:field="*{medicalService}">
-				<option th:each="medicalService : ${medicalService}" th:value="${medicalService.id}"
-					th:text="${medicalService.name}">
-				</option>
-			</select>
-			<br>
-
 			<select name="diagnosis" th:field="*{diagnosis}">
-				<option th:each="diagnosis : ${diagnosis}" th:value="${diagnosis.id}" th:text="${diagnosis.name}">
+				<option th:each="diagnosis : ${diagnoses}" th:value="${diagnosis.id}" th:text="${diagnosis.name}">
 				</option>
 			</select>
 			<br>
