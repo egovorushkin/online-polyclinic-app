@@ -53,7 +53,7 @@
         <h3>Administrator Directory</h3>
         <hr>
 
-        <a th:href="@{/doctors/showFormForAdd}" class="btn btn-primary btn-sm mb-3">
+        <a th:href="@{/administrators/showFormForAdd}" class="btn btn-primary btn-sm mb-3">
             Add Administrator
         </a>
 
@@ -73,7 +73,7 @@
                 <td th:text="${tempAdministrator.email}"></td>
 
                 <td>
-                    <a th:href="@{/administrators/showFormForUpdate(administratorId=${tempDoctor.id})}" class="btn btn-info btn-sm">
+                    <a th:href="@{/administrators/showFormForUpdate(administratorId=${tempAdministrator.id})}" class="btn btn-info btn-sm">
                         Update
                     </a>
 

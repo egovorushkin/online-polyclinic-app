@@ -70,8 +70,7 @@ public class Administrator {
 
 	@Override
 	public String toString() {
-		return "Administrator [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ "]";
+		return lastName + " " + firstName;
 	}
 	
 	

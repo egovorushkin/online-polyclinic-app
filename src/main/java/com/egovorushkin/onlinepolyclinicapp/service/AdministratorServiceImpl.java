@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.egovorushkin.onlinepolyclinicapp.dao.AdministratorRepository;
 import com.egovorushkin.onlinepolyclinicapp.entity.Administrator;
 
+@Service
 public class AdministratorServiceImpl implements AdministratorService {
 
 	private AdministratorRepository administratorRepository;
